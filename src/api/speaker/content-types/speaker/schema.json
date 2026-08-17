@@ -24,14 +24,7 @@
       "type": "text"
     },
     "photo": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "type": "string"
     },
     "initials": {
       "type": "string"
