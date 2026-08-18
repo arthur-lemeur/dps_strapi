@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "fall_facts",
+  "info": {
+    "singularName": "fall-fact",
+    "pluralName": "fall-facts",
+    "displayName": "fall/fact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fact1": {
+      "type": "string"
+    },
+    "fact1_desc": {
+      "type": "text"
+    },
+    "fact2": {
+      "type": "string"
+    },
+    "fact2_desc": {
+      "type": "text"
+    },
+    "fact3": {
+      "type": "string"
+    },
+    "fact3_desc": {
+      "type": "string"
+    }
+  }
+}

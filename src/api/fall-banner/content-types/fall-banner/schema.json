@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "landing_page_banners",
+  "collectionName": "fall_banners",
   "info": {
-    "singularName": "landing-page-banner",
-    "pluralName": "landing-page-banners",
-    "displayName": "Landing page - Banner"
+    "singularName": "fall-banner",
+    "pluralName": "fall-banners",
+    "displayName": "fall/banner"
   },
   "options": {
     "draftAndPublish": true

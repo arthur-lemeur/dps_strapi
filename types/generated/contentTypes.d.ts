@@ -561,13 +561,12 @@ export interface ApiArchiveVideoArchiveVideo
   };
 }
 
-export interface ApiLandingPageBannerLandingPageBanner
-  extends Struct.SingleTypeSchema {
-  collectionName: 'landing_page_banners';
+export interface ApiFallBannerFallBanner extends Struct.SingleTypeSchema {
+  collectionName: 'fall_banners';
   info: {
-    displayName: 'Landing page - Banner';
-    pluralName: 'landing-page-banners';
-    singularName: 'landing-page-banner';
+    displayName: 'fall/banner';
+    pluralName: 'fall-banners';
+    singularName: 'fall-banner';
   };
   options: {
     draftAndPublish: true;
@@ -581,7 +580,7 @@ export interface ApiLandingPageBannerLandingPageBanner
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::landing-page-banner.landing-page-banner'
+      'api::fall-banner.fall-banner'
     > &
       Schema.Attribute.Private;
     organiser: Schema.Attribute.String;
@@ -592,6 +591,39 @@ export interface ApiLandingPageBannerLandingPageBanner
       Schema.Attribute.Private;
     venue: Schema.Attribute.String;
     year: Schema.Attribute.String;
+  };
+}
+
+export interface ApiFallFactFallFact extends Struct.SingleTypeSchema {
+  collectionName: 'fall_facts';
+  info: {
+    displayName: 'fall/fact';
+    pluralName: 'fall-facts';
+    singularName: 'fall-fact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fact1: Schema.Attribute.String;
+    fact1_desc: Schema.Attribute.Text;
+    fact2: Schema.Attribute.String;
+    fact2_desc: Schema.Attribute.Text;
+    fact3: Schema.Attribute.String;
+    fact3_desc: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::fall-fact.fall-fact'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -660,6 +692,72 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     planning: Schema.Attribute.Relation<'manyToOne', 'api::planning.planning'>;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpringBannerSpringBanner extends Struct.SingleTypeSchema {
+  collectionName: 'spring_banners';
+  info: {
+    displayName: 'spring/banner';
+    pluralName: 'spring-banners';
+    singularName: 'spring-banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dates: Schema.Attribute.String;
+    desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spring-banner.spring-banner'
+    > &
+      Schema.Attribute.Private;
+    organiser: Schema.Attribute.String;
+    poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
+export interface ApiSpringFactSpringFact extends Struct.SingleTypeSchema {
+  collectionName: 'spring_facts';
+  info: {
+    displayName: 'spring/fact';
+    pluralName: 'spring-facts';
+    singularName: 'spring-fact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fact1: Schema.Attribute.String;
+    fact1_desc: Schema.Attribute.Text;
+    fact2: Schema.Attribute.String;
+    fact2_desc: Schema.Attribute.Text;
+    fact3: Schema.Attribute.String;
+    fact3_desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spring-fact.spring-fact'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1214,9 +1312,12 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::archive-photo.archive-photo': ApiArchivePhotoArchivePhoto;
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
-      'api::landing-page-banner.landing-page-banner': ApiLandingPageBannerLandingPageBanner;
+      'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
+      'api::fall-fact.fall-fact': ApiFallFactFallFact;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
+      'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
+      'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
