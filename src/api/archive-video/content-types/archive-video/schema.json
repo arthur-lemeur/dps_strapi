@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "archive_videos",
+  "info": {
+    "singularName": "archive-video",
+    "pluralName": "archive-videos",
+    "displayName": "Archive video"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topic": {
+      "type": "enumeration",
+      "enum": [
+        "Accessibility",
+        "AI & discovery",
+        "Business",
+        "Infrastructure",
+        "Standards"
+      ]
+    },
+    "edition": {
+      "type": "enumeration",
+      "enum": [
+        "Prague · 2026",
+        "Dublin · 2025",
+        "Paris · 2024",
+        "Madrid · 2022",
+        "Paris · 20219"
+      ]
+    },
+    "duration": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "speakers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::speaker.speaker",
+      "mappedBy": "archive_video"
+    },
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

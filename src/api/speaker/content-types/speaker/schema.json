@@ -28,6 +28,18 @@
     },
     "initials": {
       "type": "string"
+    },
+    "planning": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::planning.planning",
+      "inversedBy": "speakers"
+    },
+    "archive_video": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::archive-video.archive-video",
+      "inversedBy": "speakers"
     }
   }
 }

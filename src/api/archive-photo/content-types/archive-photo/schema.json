@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "archive_photos",
+  "info": {
+    "singularName": "archive-photo",
+    "pluralName": "archive-photos",
+    "displayName": "Archive photo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "link": {
+      "type": "string"
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}

@@ -480,6 +480,154 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArchivePhotoArchivePhoto
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'archive_photos';
+  info: {
+    displayName: 'Archive photo';
+    pluralName: 'archive-photos';
+    singularName: 'archive-photo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    caption: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive-photo.archive-photo'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiArchiveVideoArchiveVideo
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'archive_videos';
+  info: {
+    displayName: 'Archive video';
+    pluralName: 'archive-videos';
+    singularName: 'archive-video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    duration: Schema.Attribute.String;
+    edition: Schema.Attribute.Enumeration<
+      [
+        'Prague \u00B7 2026',
+        'Dublin \u00B7 2025',
+        'Paris \u00B7 2024',
+        'Madrid \u00B7 2022',
+        'Paris \u00B7 20219',
+      ]
+    >;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::archive-video.archive-video'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
+    text: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    topic: Schema.Attribute.Enumeration<
+      [
+        'Accessibility',
+        'AI & discovery',
+        'Business',
+        'Infrastructure',
+        'Standards',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLandingPageBannerLandingPageBanner
+  extends Struct.SingleTypeSchema {
+  collectionName: 'landing_page_banners';
+  info: {
+    displayName: 'Landing page - Banner';
+    pluralName: 'landing-page-banners';
+    singularName: 'landing-page-banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dates: Schema.Attribute.String;
+    desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::landing-page-banner.landing-page-banner'
+    > &
+      Schema.Attribute.Private;
+    organiser: Schema.Attribute.String;
+    poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
+export interface ApiPlanningPlanning extends Struct.CollectionTypeSchema {
+  collectionName: 'plannings';
+  info: {
+    displayName: 'planning';
+    pluralName: 'plannings';
+    singularName: 'planning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    desc: Schema.Attribute.Text;
+    kind: Schema.Attribute.Enumeration<['talk', 'break']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::planning.planning'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
+    time: Schema.Attribute.Time;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
   collectionName: 'speakers';
   info: {
@@ -491,6 +639,10 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    archive_video: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::archive-video.archive-video'
+    >;
     bio: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -505,8 +657,43 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     org: Schema.Attribute.String;
     photo: Schema.Attribute.String;
+    planning: Schema.Attribute.Relation<'manyToOne', 'api::planning.planning'>;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTicketTierTicketTier extends Struct.CollectionTypeSchema {
+  collectionName: 'ticket_tiers';
+  info: {
+    displayName: 'Ticket tier';
+    pluralName: 'ticket-tiers';
+    singularName: 'ticket-tier';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desc: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ticket-tier.ticket-tier'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    perks: Schema.Attribute.RichText &
+      Schema.Attribute.DefaultTo<'Full access to both Summit days, Lunches & coffee breaks, Evening cocktail reception, 20% XML Toronto discount code'>;
+    price: Schema.Attribute.Integer;
+    priceNote: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1025,7 +1212,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::archive-photo.archive-photo': ApiArchivePhotoArchivePhoto;
+      'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
+      'api::landing-page-banner.landing-page-banner': ApiLandingPageBannerLandingPageBanner;
+      'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
+      'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "landing_page_banners",
+  "info": {
+    "singularName": "landing-page-banner",
+    "pluralName": "landing-page-banners",
+    "displayName": "Landing page - Banner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "organiser": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
+    "dates": {
+      "type": "string"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "poster": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
