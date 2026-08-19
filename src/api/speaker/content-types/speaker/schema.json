@@ -40,6 +40,9 @@
       "relation": "manyToOne",
       "target": "api::archive-video.archive-video",
       "inversedBy": "speakers"
+    },
+    "preview": {
+      "type": "boolean"
     }
   }
 }

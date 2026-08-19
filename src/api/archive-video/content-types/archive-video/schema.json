@@ -48,6 +48,9 @@
     },
     "link": {
       "type": "string"
+    },
+    "preview": {
+      "type": "boolean"
     }
   }
 }

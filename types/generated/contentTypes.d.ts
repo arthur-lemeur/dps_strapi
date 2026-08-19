@@ -542,6 +542,7 @@ export interface ApiArchiveVideoArchiveVideo
       'api::archive-video.archive-video'
     > &
       Schema.Attribute.Private;
+    preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
     text: Schema.Attribute.String;
@@ -627,10 +628,39 @@ export interface ApiFallFactFallFact extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFallPartnerFallPartner extends Struct.SingleTypeSchema {
+  collectionName: 'fall_partners';
+  info: {
+    displayName: 'fall/partner';
+    pluralName: 'fall-partners';
+    singularName: 'fall-partner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::fall-partner.fall-partner'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPlanningPlanning extends Struct.CollectionTypeSchema {
   collectionName: 'plannings';
   info: {
-    displayName: 'planning';
+    displayName: 'programme';
     pluralName: 'plannings';
     singularName: 'planning';
   };
@@ -650,6 +680,7 @@ export interface ApiPlanningPlanning extends Struct.CollectionTypeSchema {
       'api::planning.planning'
     > &
       Schema.Attribute.Private;
+    preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
     time: Schema.Attribute.Time;
@@ -690,6 +721,7 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     org: Schema.Attribute.String;
     photo: Schema.Attribute.String;
     planning: Schema.Attribute.Relation<'manyToOne', 'api::planning.planning'>;
+    preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -757,6 +789,35 @@ export interface ApiSpringFactSpringFact extends Struct.SingleTypeSchema {
       'api::spring-fact.spring-fact'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpringPartnerSpringPartner extends Struct.SingleTypeSchema {
+  collectionName: 'spring_partners';
+  info: {
+    displayName: 'spring/partner';
+    pluralName: 'spring-partners';
+    singularName: 'spring-partner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spring-partner.spring-partner'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1314,10 +1375,12 @@ declare module '@strapi/strapi' {
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
+      'api::fall-partner.fall-partner': ApiFallPartnerFallPartner;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
+      'api::spring-partner.spring-partner': ApiSpringPartnerSpringPartner;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

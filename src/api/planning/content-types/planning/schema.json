@@ -4,7 +4,7 @@
   "info": {
     "singularName": "planning",
     "pluralName": "plannings",
-    "displayName": "planning"
+    "displayName": "programme"
   },
   "options": {
     "draftAndPublish": true
@@ -35,6 +35,9 @@
         "talk",
         "break"
       ]
+    },
+    "preview": {
+      "type": "boolean"
     }
   }
 }
