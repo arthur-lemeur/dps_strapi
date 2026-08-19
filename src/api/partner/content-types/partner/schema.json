@@ -1,10 +1,10 @@
 {
-  "kind": "singleType",
-  "collectionName": "spring_partners",
+  "kind": "collectionType",
+  "collectionName": "partners",
   "info": {
-    "singularName": "spring-partner",
-    "pluralName": "spring-partners",
-    "displayName": "spring/partner"
+    "singularName": "partner",
+    "pluralName": "partners",
+    "displayName": "partner"
   },
   "options": {
     "draftAndPublish": true

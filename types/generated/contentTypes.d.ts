@@ -628,12 +628,12 @@ export interface ApiFallFactFallFact extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiFallPartnerFallPartner extends Struct.SingleTypeSchema {
-  collectionName: 'fall_partners';
+export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
+  collectionName: 'partners';
   info: {
-    displayName: 'fall/partner';
-    pluralName: 'fall-partners';
-    singularName: 'fall-partner';
+    displayName: 'partner';
+    pluralName: 'partners';
+    singularName: 'partner';
   };
   options: {
     draftAndPublish: true;
@@ -645,7 +645,7 @@ export interface ApiFallPartnerFallPartner extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::fall-partner.fall-partner'
+      'api::partner.partner'
     > &
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -789,35 +789,6 @@ export interface ApiSpringFactSpringFact extends Struct.SingleTypeSchema {
       'api::spring-fact.spring-fact'
     > &
       Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiSpringPartnerSpringPartner extends Struct.SingleTypeSchema {
-  collectionName: 'spring_partners';
-  info: {
-    displayName: 'spring/partner';
-    pluralName: 'spring-partners';
-    singularName: 'spring-partner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::spring-partner.spring-partner'
-    > &
-      Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1375,12 +1346,11 @@ declare module '@strapi/strapi' {
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
-      'api::fall-partner.fall-partner': ApiFallPartnerFallPartner;
+      'api::partner.partner': ApiPartnerPartner;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
-      'api::spring-partner.spring-partner': ApiSpringPartnerSpringPartner;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
