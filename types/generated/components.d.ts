@@ -14,7 +14,9 @@ export interface LocationPracticalInfos extends Struct.ComponentSchema {
           separator: ',';
         }
       >;
-    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'By air'>;
+    title: Schema.Attribute.Enumeration<
+      ['By air', 'By train & tram', 'Where to stay']
+    >;
   };
 }
 

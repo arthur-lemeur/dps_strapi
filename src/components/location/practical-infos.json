@@ -7,8 +7,12 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "default": "By air"
+      "type": "enumeration",
+      "enum": [
+        "By air",
+        "By train & tram",
+        "Where to stay"
+      ]
     },
     "items": {
       "type": "customField",
