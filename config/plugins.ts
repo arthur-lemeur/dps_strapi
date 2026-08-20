@@ -39,12 +39,6 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
       },
     },
   },
-  'multi-select': {
-    enabled: true,
-  },
-  'tags-custom-field': {
-    enabled: true,
-  },
 });
 
 export default config;
