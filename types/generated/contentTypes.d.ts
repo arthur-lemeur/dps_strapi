@@ -715,24 +715,20 @@ export interface ApiPlanningPlanning extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     date: Schema.Attribute.Date;
     day_number: Schema.Attribute.Integer;
-    desc: Schema.Attribute.Text;
     edition: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<
         'plugin::multi-select.multi-select',
         ['Spring', 'Fall']
       > &
       Schema.Attribute.DefaultTo<'[]'>;
-    kind: Schema.Attribute.Enumeration<['talk', 'break']>;
+    entry: Schema.Attribute.Component<'programme.day-entry', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::planning.planning'
     > &
       Schema.Attribute.Private;
-    preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
-    speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
-    time: Schema.Attribute.Time;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -775,7 +771,6 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     org: Schema.Attribute.String;
     photo: Schema.Attribute.String;
-    planning: Schema.Attribute.Relation<'manyToOne', 'api::planning.planning'>;
     preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;

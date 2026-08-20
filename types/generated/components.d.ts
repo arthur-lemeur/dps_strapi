@@ -20,10 +20,26 @@ export interface LocationPracticalInfos extends Struct.ComponentSchema {
   };
 }
 
+export interface ProgrammeDayEntry extends Struct.ComponentSchema {
+  collectionName: 'components_programme_day_entries';
+  info: {
+    displayName: 'day_entry';
+    icon: 'bulletList';
+  };
+  attributes: {
+    desc: Schema.Attribute.Text;
+    kind: Schema.Attribute.Enumeration<['talk', 'break']>;
+    preview: Schema.Attribute.Boolean;
+    speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
+    time: Schema.Attribute.Time;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'location.practical-infos': LocationPracticalInfos;
+      'programme.day-entry': ProgrammeDayEntry;
     }
   }
 }

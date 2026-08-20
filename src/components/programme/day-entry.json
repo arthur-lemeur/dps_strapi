@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_programme_day_entries",
+  "info": {
+    "displayName": "day_entry",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "time"
+    },
+    "speakers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::speaker.speaker"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "kind": {
+      "type": "enumeration",
+      "enum": [
+        "talk",
+        "break"
+      ]
+    },
+    "preview": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}
