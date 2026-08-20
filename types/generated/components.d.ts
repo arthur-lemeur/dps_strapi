@@ -32,6 +32,7 @@ export interface ProgrammeDayEntry extends Struct.ComponentSchema {
     preview: Schema.Attribute.Boolean;
     speakers: Schema.Attribute.Relation<'oneToMany', 'api::speaker.speaker'>;
     time: Schema.Attribute.Time;
+    title: Schema.Attribute.String;
   };
 }
 
