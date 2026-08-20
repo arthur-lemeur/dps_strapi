@@ -29,6 +29,15 @@
     "perks": {
       "type": "richtext",
       "default": "Full access to both Summit days, Lunches & coffee breaks, Evening cocktail reception, 20% XML Toronto discount code"
+    },
+    "edition": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "Spring",
+        "Fall"
+      ]
     }
   }
 }

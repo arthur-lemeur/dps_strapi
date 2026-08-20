@@ -628,6 +628,42 @@ export interface ApiFallFactFallFact extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFallLocationFallLocation extends Struct.SingleTypeSchema {
+  collectionName: 'fall_locations';
+  info: {
+    displayName: 'fall/location';
+    pluralName: 'fall-locations';
+    singularName: 'fall-location';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accessibility: Schema.Attribute.String;
+    adress: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dates: Schema.Attribute.String;
+    desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::fall-location.fall-location'
+    > &
+      Schema.Attribute.Private;
+    practical_infos: Schema.Attribute.Component<
+      'location.practical-infos',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+  };
+}
+
 export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
   collectionName: 'partners';
   info: {
@@ -642,6 +678,12 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    edition: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Spring', 'Fall']
+      > &
+      Schema.Attribute.DefaultTo<'[]'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -673,6 +715,12 @@ export interface ApiPlanningPlanning extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     date: Schema.Attribute.Date;
     desc: Schema.Attribute.Text;
+    edition: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Spring', 'Fall']
+      > &
+      Schema.Attribute.DefaultTo<'[]'>;
     kind: Schema.Attribute.Enumeration<['talk', 'break']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -710,6 +758,12 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    edition: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Spring', 'Fall']
+      > &
+      Schema.Attribute.DefaultTo<'[]'>;
     initials: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -796,6 +850,39 @@ export interface ApiSpringFactSpringFact extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiSpringLocationSpringLocation
+  extends Struct.SingleTypeSchema {
+  collectionName: 'spring_locations';
+  info: {
+    displayName: 'spring/location';
+    pluralName: 'spring-locations';
+    singularName: 'spring-location';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accessibility: Schema.Attribute.String;
+    adress: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dates: Schema.Attribute.String;
+    desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spring-location.spring-location'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+  };
+}
+
 export interface ApiTicketTierTicketTier extends Struct.CollectionTypeSchema {
   collectionName: 'ticket_tiers';
   info: {
@@ -811,6 +898,12 @@ export interface ApiTicketTierTicketTier extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     desc: Schema.Attribute.Text;
+    edition: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Spring', 'Fall']
+      > &
+      Schema.Attribute.DefaultTo<'[]'>;
     featured: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1346,11 +1439,13 @@ declare module '@strapi/strapi' {
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
+      'api::fall-location.fall-location': ApiFallLocationFallLocation;
       'api::partner.partner': ApiPartnerPartner;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
+      'api::spring-location.spring-location': ApiSpringLocationSpringLocation;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

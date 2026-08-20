@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "spring_locations",
+  "info": {
+    "singularName": "spring-location",
+    "pluralName": "spring-locations",
+    "displayName": "spring/location"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "venue": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "dates": {
+      "type": "string"
+    },
+    "accessibility": {
+      "type": "string"
+    }
+  }
+}

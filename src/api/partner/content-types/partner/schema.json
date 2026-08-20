@@ -23,6 +23,15 @@
         "videos",
         "audios"
       ]
+    },
+    "edition": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "Spring",
+        "Fall"
+      ]
     }
   }
 }

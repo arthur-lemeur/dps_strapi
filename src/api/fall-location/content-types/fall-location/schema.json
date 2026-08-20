@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "fall_locations",
+  "info": {
+    "singularName": "fall-location",
+    "pluralName": "fall-locations",
+    "displayName": "fall/location"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "venue": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "dates": {
+      "type": "string"
+    },
+    "accessibility": {
+      "type": "string"
+    },
+    "practical_infos": {
+      "type": "component",
+      "component": "location.practical-infos",
+      "repeatable": true
+    }
+  }
+}

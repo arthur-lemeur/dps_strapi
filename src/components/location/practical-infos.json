@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_location_practical_infos",
+  "info": {
+    "displayName": "practical infos",
+    "icon": "plane"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "By air"
+    },
+    "items": {
+      "type": "customField",
+      "customField": "plugin::tags-input.tags",
+      "options": {
+        "separator": ","
+      }
+    }
+  },
+  "config": {}
+}
