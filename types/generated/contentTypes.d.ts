@@ -714,6 +714,7 @@ export interface ApiPlanningPlanning extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.Date;
+    day_number: Schema.Attribute.Integer;
     desc: Schema.Attribute.Text;
     edition: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<

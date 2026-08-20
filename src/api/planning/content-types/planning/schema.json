@@ -11,6 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "day_number": {
+      "type": "integer"
+    },
     "date": {
       "type": "date"
     },
