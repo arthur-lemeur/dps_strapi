@@ -46,11 +46,11 @@
     "text": {
       "type": "string"
     },
-    "link": {
-      "type": "string"
-    },
     "preview": {
       "type": "boolean"
+    },
+    "iframe": {
+      "type": "text"
     }
   }
 }

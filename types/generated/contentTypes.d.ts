@@ -535,7 +535,7 @@ export interface ApiArchiveVideoArchiveVideo
         'Paris \u00B7 20219',
       ]
     >;
-    link: Schema.Attribute.String;
+    iframe: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
