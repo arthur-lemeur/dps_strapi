@@ -11,16 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "tier": {
-      "type": "enumeration",
-      "enum": [
-        "Gold",
-        "Silver",
-        "Digital"
-      ]
-    },
     "name": {
       "type": "string"
+    },
+    "desc": {
+      "type": "text"
     },
     "logo": {
       "type": "media",
@@ -30,6 +25,14 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "tier": {
+      "type": "enumeration",
+      "enum": [
+        "Gold",
+        "Silver",
+        "Digital"
       ]
     },
     "edition": {
