@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "spring_abouts",
+  "info": {
+    "singularName": "spring-about",
+    "pluralName": "spring-abouts",
+    "displayName": "spring/about"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    }
+  }
+}

@@ -562,6 +562,35 @@ export interface ApiArchiveVideoArchiveVideo
   };
 }
 
+export interface ApiFallAboutFallAbout extends Struct.SingleTypeSchema {
+  collectionName: 'fall_abouts';
+  info: {
+    displayName: 'fall/about';
+    pluralName: 'fall-abouts';
+    singularName: 'fall-about';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::fall-about.fall-about'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFallBannerFallBanner extends Struct.SingleTypeSchema {
   collectionName: 'fall_banners';
   info: {
@@ -776,6 +805,35 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
     preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpringAboutSpringAbout extends Struct.SingleTypeSchema {
+  collectionName: 'spring_abouts';
+  info: {
+    displayName: 'spring/about';
+    pluralName: 'spring-abouts';
+    singularName: 'spring-about';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desc: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spring-about.spring-about'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1435,12 +1493,14 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::archive-photo.archive-photo': ApiArchivePhotoArchivePhoto;
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
+      'api::fall-about.fall-about': ApiFallAboutFallAbout;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
       'api::fall-location.fall-location': ApiFallLocationFallLocation;
       'api::partner.partner': ApiPartnerPartner;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
+      'api::spring-about.spring-about': ApiSpringAboutSpringAbout;
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::spring-location.spring-location': ApiSpringLocationSpringLocation;
