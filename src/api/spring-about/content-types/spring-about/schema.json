@@ -16,6 +16,12 @@
     },
     "desc": {
       "type": "text"
+    },
+    "details": {
+      "type": "text"
+    },
+    "schedule": {
+      "type": "text"
     }
   }
 }
