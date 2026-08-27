@@ -628,7 +628,7 @@ export interface ApiFallAccessibilyFallAccessibily
   extends Struct.SingleTypeSchema {
   collectionName: 'fall_accessibilies';
   info: {
-    displayName: 'fall/accessibily';
+    displayName: 'fall/accessibility';
     pluralName: 'fall-accessibilies';
     singularName: 'fall-accessibily';
   };
