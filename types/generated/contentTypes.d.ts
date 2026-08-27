@@ -882,6 +882,36 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSponsorshipSponsorship extends Struct.CollectionTypeSchema {
+  collectionName: 'sponsorships';
+  info: {
+    displayName: 'sponsorship';
+    pluralName: 'sponsorships';
+    singularName: 'sponsorship';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amount: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sponsorship.sponsorship'
+    > &
+      Schema.Attribute.Private;
+    perks: Schema.Attribute.Component<'sponsorship.sponsorship-perks', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpringAboutSpringAbout extends Struct.SingleTypeSchema {
   collectionName: 'spring_abouts';
   info: {
@@ -1575,6 +1605,7 @@ declare module '@strapi/strapi' {
       'api::partner.partner': ApiPartnerPartner;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
+      'api::sponsorship.sponsorship': ApiSponsorshipSponsorship;
       'api::spring-about.spring-about': ApiSpringAboutSpringAbout;
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;

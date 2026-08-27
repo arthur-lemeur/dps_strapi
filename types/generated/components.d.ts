@@ -36,11 +36,23 @@ export interface ProgrammeDayEntry extends Struct.ComponentSchema {
   };
 }
 
+export interface SponsorshipSponsorshipPerks extends Struct.ComponentSchema {
+  collectionName: 'components_sponsorship_sponsorship_perks';
+  info: {
+    displayName: 'sponsorship perks';
+    icon: 'check';
+  };
+  attributes: {
+    perk: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'location.practical-infos': LocationPracticalInfos;
       'programme.day-entry': ProgrammeDayEntry;
+      'sponsorship.sponsorship-perks': SponsorshipSponsorshipPerks;
     }
   }
 }

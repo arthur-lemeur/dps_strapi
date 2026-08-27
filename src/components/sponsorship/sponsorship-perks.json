@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sponsorship_sponsorship_perks",
+  "info": {
+    "displayName": "sponsorship perks",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "perk": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

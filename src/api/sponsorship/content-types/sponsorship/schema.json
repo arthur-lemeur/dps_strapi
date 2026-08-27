@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sponsorships",
+  "info": {
+    "singularName": "sponsorship",
+    "pluralName": "sponsorships",
+    "displayName": "sponsorship"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "perks": {
+      "type": "component",
+      "component": "sponsorship.sponsorship-perks",
+      "repeatable": true
+    }
+  }
+}
