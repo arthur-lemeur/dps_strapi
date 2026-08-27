@@ -562,6 +562,37 @@ export interface ApiArchiveVideoArchiveVideo
   };
 }
 
+export interface ApiEditionsHistoryEditionsHistory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'editions_histories';
+  info: {
+    displayName: 'editionsHistory';
+    pluralName: 'editions-histories';
+    singularName: 'editions-history';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    city: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::editions-history.editions-history'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
 export interface ApiFallAboutFallAbout extends Struct.SingleTypeSchema {
   collectionName: 'fall_abouts';
   info: {
@@ -1497,6 +1528,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::archive-photo.archive-photo': ApiArchivePhotoArchivePhoto;
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
+      'api::editions-history.editions-history': ApiEditionsHistoryEditionsHistory;
       'api::fall-about.fall-about': ApiFallAboutFallAbout;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
