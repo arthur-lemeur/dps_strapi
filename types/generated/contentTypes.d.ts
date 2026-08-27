@@ -480,6 +480,44 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAccessibilityAccessibility
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'accessibilities';
+  info: {
+    displayName: 'accessibility';
+    pluralName: 'accessibilities';
+    singularName: 'accessibility';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    edition: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Spring', 'Fall']
+      > &
+      Schema.Attribute.DefaultTo<'[]'>;
+    icon: Schema.Attribute.String;
+    kind: Schema.Attribute.Enumeration<['Accessibility', 'Sustainability']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::accessibility.accessibility'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiArchivePhotoArchivePhoto
   extends Struct.CollectionTypeSchema {
   collectionName: 'archive_photos';
@@ -617,37 +655,6 @@ export interface ApiFallAboutFallAbout extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     schedule: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiFallAccessibilyFallAccessibily
-  extends Struct.SingleTypeSchema {
-  collectionName: 'fall_accessibilies';
-  info: {
-    displayName: 'fall/accessibility';
-    pluralName: 'fall-accessibilies';
-    singularName: 'fall-accessibily';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    icon: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::fall-accessibily.fall-accessibily'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -899,37 +906,6 @@ export interface ApiSpringAboutSpringAbout extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     schedule: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiSpringAccessibilitySpringAccessibility
-  extends Struct.SingleTypeSchema {
-  collectionName: 'spring_accessibilities';
-  info: {
-    displayName: 'spring/accessibility';
-    pluralName: 'spring-accessibilities';
-    singularName: 'spring-accessibility';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    icon: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::spring-accessibility.spring-accessibility'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1588,11 +1564,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::accessibility.accessibility': ApiAccessibilityAccessibility;
       'api::archive-photo.archive-photo': ApiArchivePhotoArchivePhoto;
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
       'api::editions-history.editions-history': ApiEditionsHistoryEditionsHistory;
       'api::fall-about.fall-about': ApiFallAboutFallAbout;
-      'api::fall-accessibily.fall-accessibily': ApiFallAccessibilyFallAccessibily;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
       'api::fall-location.fall-location': ApiFallLocationFallLocation;
@@ -1600,7 +1576,6 @@ declare module '@strapi/strapi' {
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::spring-about.spring-about': ApiSpringAboutSpringAbout;
-      'api::spring-accessibility.spring-accessibility': ApiSpringAccessibilitySpringAccessibility;
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::spring-location.spring-location': ApiSpringLocationSpringLocation;

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accessibilities",
+  "info": {
+    "singularName": "accessibility",
+    "pluralName": "accessibilities",
+    "displayName": "accessibility"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "edition": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "Spring",
+        "Fall"
+      ]
+    },
+    "kind": {
+      "type": "enumeration",
+      "enum": [
+        "Accessibility",
+        "Sustainability"
+      ]
+    }
+  }
+}
