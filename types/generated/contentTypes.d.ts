@@ -903,7 +903,7 @@ export interface ApiSponsorshipSponsorship extends Struct.CollectionTypeSchema {
       'api::sponsorship.sponsorship'
     > &
       Schema.Attribute.Private;
-    perks: Schema.Attribute.Component<'sponsorship.sponsorship-perks', true>;
+    perks: Schema.Attribute.Component<'lists.perks-list', true>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1071,8 +1071,7 @@ export interface ApiTicketTierTicketTier extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    perks: Schema.Attribute.RichText &
-      Schema.Attribute.DefaultTo<'Full access to both Summit days, Lunches & coffee breaks, Evening cocktail reception, 20% XML Toronto discount code'>;
+    perks: Schema.Attribute.Component<'lists.perks-list', true>;
     price: Schema.Attribute.Integer;
     priceNote: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;

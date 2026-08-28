@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ListsPerksList extends Struct.ComponentSchema {
+  collectionName: 'components_lists_perks_lists';
+  info: {
+    displayName: 'perks list';
+    icon: 'check';
+  };
+  attributes: {
+    perk: Schema.Attribute.String;
+  };
+}
+
 export interface LocationPracticalInfos extends Struct.ComponentSchema {
   collectionName: 'components_location_practical_infos';
   info: {
@@ -36,23 +47,12 @@ export interface ProgrammeDayEntry extends Struct.ComponentSchema {
   };
 }
 
-export interface SponsorshipSponsorshipPerks extends Struct.ComponentSchema {
-  collectionName: 'components_sponsorship_sponsorship_perks';
-  info: {
-    displayName: 'sponsorship perks';
-    icon: 'check';
-  };
-  attributes: {
-    perk: Schema.Attribute.String;
-  };
-}
-
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
+      'lists.perks-list': ListsPerksList;
       'location.practical-infos': LocationPracticalInfos;
       'programme.day-entry': ProgrammeDayEntry;
-      'sponsorship.sponsorship-perks': SponsorshipSponsorshipPerks;
     }
   }
 }

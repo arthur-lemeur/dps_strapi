@@ -19,7 +19,7 @@
     },
     "perks": {
       "type": "component",
-      "component": "sponsorship.sponsorship-perks",
+      "component": "lists.perks-list",
       "repeatable": true
     }
   }
