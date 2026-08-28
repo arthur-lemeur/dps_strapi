@@ -791,7 +791,10 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
       'api::partner.partner'
     > &
       Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    logo_media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    logo_url: Schema.Attribute.String;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     tier: Schema.Attribute.Enumeration<['Gold', 'Silver', 'Digital']>;
@@ -872,7 +875,10 @@ export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     org: Schema.Attribute.String;
-    photo: Schema.Attribute.String;
+    photo_media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    photo_url: Schema.Attribute.String;
     preview: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
@@ -1039,6 +1045,36 @@ export interface ApiSpringLocationSpringLocation
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     venue: Schema.Attribute.String;
+  };
+}
+
+export interface ApiTestimonyTestimony extends Struct.CollectionTypeSchema {
+  collectionName: 'testimonies';
+  info: {
+    displayName: 'testimony';
+    pluralName: 'testimonies';
+    singularName: 'testimony';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::testimony.testimony'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1609,6 +1645,7 @@ declare module '@strapi/strapi' {
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::spring-location.spring-location': ApiSpringLocationSpringLocation;
+      'api::testimony.testimony': ApiTestimonyTestimony;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -17,7 +17,7 @@
     "desc": {
       "type": "text"
     },
-    "logo": {
+    "logo_media": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -26,6 +26,9 @@
         "videos",
         "audios"
       ]
+    },
+    "logo_url": {
+      "type": "string"
     },
     "tier": {
       "type": "enumeration",

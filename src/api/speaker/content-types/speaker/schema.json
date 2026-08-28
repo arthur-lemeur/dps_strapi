@@ -23,8 +23,18 @@
     "bio": {
       "type": "text"
     },
-    "photo": {
+    "photo_url": {
       "type": "string"
+    },
+    "photo_media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "initials": {
       "type": "string"
