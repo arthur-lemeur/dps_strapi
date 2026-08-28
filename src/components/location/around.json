@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_location_arounds",
+  "info": {
+    "displayName": "around",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "when": {
+      "type": "date"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "featured": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

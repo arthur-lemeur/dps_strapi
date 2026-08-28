@@ -11,6 +11,20 @@ export interface ListsPerksList extends Struct.ComponentSchema {
   };
 }
 
+export interface LocationAround extends Struct.ComponentSchema {
+  collectionName: 'components_location_arounds';
+  info: {
+    displayName: 'around';
+    icon: 'cursor';
+  };
+  attributes: {
+    featured: Schema.Attribute.Boolean;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    when: Schema.Attribute.Date;
+  };
+}
+
 export interface LocationPracticalInfos extends Struct.ComponentSchema {
   collectionName: 'components_location_practical_infos';
   info: {
@@ -51,6 +65,7 @@ declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'lists.perks-list': ListsPerksList;
+      'location.around': LocationAround;
       'location.practical-infos': LocationPracticalInfos;
       'programme.day-entry': ProgrammeDayEntry;
     }

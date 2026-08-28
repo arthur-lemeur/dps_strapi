@@ -30,6 +30,11 @@
       "type": "component",
       "component": "location.practical-infos",
       "repeatable": true
+    },
+    "around": {
+      "type": "component",
+      "component": "location.around",
+      "repeatable": true
     }
   }
 }

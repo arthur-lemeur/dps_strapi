@@ -25,6 +25,11 @@
     },
     "accessibility": {
       "type": "string"
+    },
+    "around": {
+      "type": "component",
+      "component": "location.around",
+      "repeatable": true
     }
   }
 }
