@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "arount_events",
+  "info": {
+    "singularName": "arount-event",
+    "pluralName": "arount-events",
+    "displayName": "arountEvent"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "when": {
+      "type": "date"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "featured": {
+      "type": "boolean"
+    }
+  }
+}

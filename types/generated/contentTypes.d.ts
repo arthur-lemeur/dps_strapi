@@ -600,6 +600,37 @@ export interface ApiArchiveVideoArchiveVideo
   };
 }
 
+export interface ApiArountEventArountEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'arount_events';
+  info: {
+    displayName: 'arountEvent';
+    pluralName: 'arount-events';
+    singularName: 'arount-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featured: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::arount-event.arount-event'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    when: Schema.Attribute.Date;
+  };
+}
+
 export interface ApiEditionsHistoryEditionsHistory
   extends Struct.CollectionTypeSchema {
   collectionName: 'editions_histories';
@@ -1632,6 +1663,7 @@ declare module '@strapi/strapi' {
       'api::accessibility.accessibility': ApiAccessibilityAccessibility;
       'api::archive-photo.archive-photo': ApiArchivePhotoArchivePhoto;
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
+      'api::arount-event.arount-event': ApiArountEventArountEvent;
       'api::editions-history.editions-history': ApiEditionsHistoryEditionsHistory;
       'api::fall-about.fall-about': ApiFallAboutFallAbout;
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
