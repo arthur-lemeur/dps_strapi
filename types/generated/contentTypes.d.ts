@@ -1048,12 +1048,12 @@ export interface ApiSpringLocationSpringLocation
   };
 }
 
-export interface ApiTestimonyTestimony extends Struct.CollectionTypeSchema {
-  collectionName: 'testimonies';
+export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
+  collectionName: 'testimonials';
   info: {
-    displayName: 'testimony';
-    pluralName: 'testimonies';
-    singularName: 'testimony';
+    displayName: 'testimonial';
+    pluralName: 'testimonials';
+    singularName: 'testimonial';
   };
   options: {
     draftAndPublish: true;
@@ -1066,7 +1066,7 @@ export interface ApiTestimonyTestimony extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::testimony.testimony'
+      'api::testimonial.testimonial'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -1645,7 +1645,7 @@ declare module '@strapi/strapi' {
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::spring-location.spring-location': ApiSpringLocationSpringLocation;
-      'api::testimony.testimony': ApiTestimonyTestimony;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

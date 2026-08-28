@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "testimonies",
+  "collectionName": "testimonials",
   "info": {
-    "singularName": "testimony",
-    "pluralName": "testimonies",
-    "displayName": "testimony"
+    "singularName": "testimonial",
+    "pluralName": "testimonials",
+    "displayName": "testimonial"
   },
   "options": {
     "draftAndPublish": true
