@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "spring-overviews",
+  "info": {
+    "singularName": "spring-overview",
+    "pluralName": "spring-overviews",
+    "displayName": "spring/overview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "year": {
+      "type": "string"
+    },
+    "dates": {
+      "type": "string"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "poster_media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "poster_url": {
+      "type": "string"
+    },
+    "extend_your_stay_text": {
+      "type": "text"
+    },
+    "fact": {
+      "type": "component",
+      "component": "facts.fact",
+      "repeatable": true,
+      "max": 4
+    }
+  }
+}

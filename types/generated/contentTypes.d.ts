@@ -765,6 +765,49 @@ export interface ApiFallLocationFallLocation extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFallOverviewFallOverview extends Struct.SingleTypeSchema {
+  collectionName: 'fall_overviews';
+  info: {
+    displayName: 'fall/overview';
+    pluralName: 'fall-overviews';
+    singularName: 'fall-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dates: Schema.Attribute.String;
+    desc: Schema.Attribute.Text;
+    extend_your_stay_text: Schema.Attribute.Text;
+    fact: Schema.Attribute.Component<'facts.fact', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 4;
+        },
+        number
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::fall-overview.fall-overview'
+    > &
+      Schema.Attribute.Private;
+    poster_media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    poster_url: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
 export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
   collectionName: 'partners';
   info: {
@@ -1047,6 +1090,55 @@ export interface ApiSpringLocationSpringLocation
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     venue: Schema.Attribute.String;
+  };
+}
+
+export interface ApiSpringOverviewSpringOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'spring-overviews';
+  info: {
+    displayName: 'spring/overview';
+    pluralName: 'spring-overviews';
+    singularName: 'spring-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dates: Schema.Attribute.String;
+    desc: Schema.Attribute.Text;
+    extend_your_stay_text: Schema.Attribute.Text;
+    fact: Schema.Attribute.Component<'facts.fact', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 4;
+        },
+        number
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::spring-overview.spring-overview'
+    > &
+      Schema.Attribute.Private;
+    poster_media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    poster_url: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    venue: Schema.Attribute.String;
+    year: Schema.Attribute.String;
   };
 }
 
@@ -1639,6 +1731,7 @@ declare module '@strapi/strapi' {
       'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
       'api::fall-fact.fall-fact': ApiFallFactFallFact;
       'api::fall-location.fall-location': ApiFallLocationFallLocation;
+      'api::fall-overview.fall-overview': ApiFallOverviewFallOverview;
       'api::partner.partner': ApiPartnerPartner;
       'api::planning.planning': ApiPlanningPlanning;
       'api::speaker.speaker': ApiSpeakerSpeaker;
@@ -1647,6 +1740,7 @@ declare module '@strapi/strapi' {
       'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
       'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::spring-location.spring-location': ApiSpringLocationSpringLocation;
+      'api::spring-overview.spring-overview': ApiSpringOverviewSpringOverview;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::ticket-tier.ticket-tier': ApiTicketTierTicketTier;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface FactsFact extends Struct.ComponentSchema {
+  collectionName: 'components_facts_facts';
+  info: {
+    displayName: 'fact';
+    icon: 'bulletList';
+  };
+  attributes: {
+    desc: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ListsPerksList extends Struct.ComponentSchema {
   collectionName: 'components_lists_perks_lists';
   info: {
@@ -64,6 +76,7 @@ export interface ProgrammeDayEntry extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
+      'facts.fact': FactsFact;
       'lists.perks-list': ListsPerksList;
       'location.around': LocationAround;
       'location.practical-infos': LocationPracticalInfos;

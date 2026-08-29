@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_facts_facts",
+  "info": {
+    "displayName": "fact",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

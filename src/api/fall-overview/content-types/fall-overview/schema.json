@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "fall_overviews",
+  "info": {
+    "singularName": "fall-overview",
+    "pluralName": "fall-overviews",
+    "displayName": "fall/overview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "year": {
+      "type": "string"
+    },
+    "dates": {
+      "type": "string"
+    },
+    "venue": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "poster_media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "poster_url": {
+      "type": "string"
+    },
+    "extend_your_stay_text": {
+      "type": "text"
+    },
+    "fact": {
+      "type": "component",
+      "component": "facts.fact",
+      "repeatable": true,
+      "max": 4
+    }
+  }
+}
