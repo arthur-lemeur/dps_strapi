@@ -662,72 +662,6 @@ export interface ApiFallAboutFallAbout extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiFallBannerFallBanner extends Struct.SingleTypeSchema {
-  collectionName: 'fall_banners';
-  info: {
-    displayName: 'fall/banner';
-    pluralName: 'fall-banners';
-    singularName: 'fall-banner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    dates: Schema.Attribute.String;
-    desc: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::fall-banner.fall-banner'
-    > &
-      Schema.Attribute.Private;
-    organiser: Schema.Attribute.String;
-    poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    venue: Schema.Attribute.String;
-    year: Schema.Attribute.String;
-  };
-}
-
-export interface ApiFallFactFallFact extends Struct.SingleTypeSchema {
-  collectionName: 'fall_facts';
-  info: {
-    displayName: 'fall/fact';
-    pluralName: 'fall-facts';
-    singularName: 'fall-fact';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    fact1: Schema.Attribute.String;
-    fact1_desc: Schema.Attribute.Text;
-    fact2: Schema.Attribute.String;
-    fact2_desc: Schema.Attribute.Text;
-    fact3: Schema.Attribute.String;
-    fact3_desc: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::fall-fact.fall-fact'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFallLocationFallLocation extends Struct.SingleTypeSchema {
   collectionName: 'fall_locations';
   info: {
@@ -781,6 +715,10 @@ export interface ApiFallOverviewFallOverview extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     dates: Schema.Attribute.String;
     desc: Schema.Attribute.Text;
+    discount_amount: Schema.Attribute.Integer;
+    discount_event: Schema.Attribute.String;
+    discount_event_dates: Schema.Attribute.String;
+    Early_birds_end: Schema.Attribute.Date;
     extend_your_stay_text: Schema.Attribute.Text;
     fact: Schema.Attribute.Component<'facts.fact', true> &
       Schema.Attribute.SetMinMax<
@@ -993,72 +931,6 @@ export interface ApiSpringAboutSpringAbout extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiSpringBannerSpringBanner extends Struct.SingleTypeSchema {
-  collectionName: 'spring_banners';
-  info: {
-    displayName: 'spring/banner';
-    pluralName: 'spring-banners';
-    singularName: 'spring-banner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    dates: Schema.Attribute.String;
-    desc: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::spring-banner.spring-banner'
-    > &
-      Schema.Attribute.Private;
-    organiser: Schema.Attribute.String;
-    poster: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    venue: Schema.Attribute.String;
-    year: Schema.Attribute.String;
-  };
-}
-
-export interface ApiSpringFactSpringFact extends Struct.SingleTypeSchema {
-  collectionName: 'spring_facts';
-  info: {
-    displayName: 'spring/fact';
-    pluralName: 'spring-facts';
-    singularName: 'spring-fact';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    fact1: Schema.Attribute.String;
-    fact1_desc: Schema.Attribute.Text;
-    fact2: Schema.Attribute.String;
-    fact2_desc: Schema.Attribute.Text;
-    fact3: Schema.Attribute.String;
-    fact3_desc: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::spring-fact.spring-fact'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiSpringLocationSpringLocation
   extends Struct.SingleTypeSchema {
   collectionName: 'spring_locations';
@@ -1104,17 +976,16 @@ export interface ApiSpringOverviewSpringOverview
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: false;
-    };
-  };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dates: Schema.Attribute.String;
     desc: Schema.Attribute.Text;
+    discount_amount: Schema.Attribute.Integer;
+    discount_event: Schema.Attribute.String;
+    discount_event_dates: Schema.Attribute.String;
+    Early_birds_end: Schema.Attribute.Date;
     extend_your_stay_text: Schema.Attribute.Text;
     fact: Schema.Attribute.Component<'facts.fact', true> &
       Schema.Attribute.SetMinMax<
@@ -1728,8 +1599,6 @@ declare module '@strapi/strapi' {
       'api::archive-video.archive-video': ApiArchiveVideoArchiveVideo;
       'api::editions-history.editions-history': ApiEditionsHistoryEditionsHistory;
       'api::fall-about.fall-about': ApiFallAboutFallAbout;
-      'api::fall-banner.fall-banner': ApiFallBannerFallBanner;
-      'api::fall-fact.fall-fact': ApiFallFactFallFact;
       'api::fall-location.fall-location': ApiFallLocationFallLocation;
       'api::fall-overview.fall-overview': ApiFallOverviewFallOverview;
       'api::partner.partner': ApiPartnerPartner;
@@ -1737,8 +1606,6 @@ declare module '@strapi/strapi' {
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::sponsorship.sponsorship': ApiSponsorshipSponsorship;
       'api::spring-about.spring-about': ApiSpringAboutSpringAbout;
-      'api::spring-banner.spring-banner': ApiSpringBannerSpringBanner;
-      'api::spring-fact.spring-fact': ApiSpringFactSpringFact;
       'api::spring-location.spring-location': ApiSpringLocationSpringLocation;
       'api::spring-overview.spring-overview': ApiSpringOverviewSpringOverview;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

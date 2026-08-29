@@ -9,11 +9,7 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": false
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "year": {
       "type": "string"
@@ -48,6 +44,18 @@
       "component": "facts.fact",
       "repeatable": true,
       "max": 4
+    },
+    "Early_birds_end": {
+      "type": "date"
+    },
+    "discount_event": {
+      "type": "string"
+    },
+    "discount_amount": {
+      "type": "integer"
+    },
+    "discount_event_dates": {
+      "type": "string"
     }
   }
 }
